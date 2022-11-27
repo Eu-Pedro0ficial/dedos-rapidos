@@ -23,7 +23,12 @@ div#score-container{
     left: 500px;
 }
 
-div#character{
+div.character{
     border: 1px solid black;
-    width: 50px;
+    width: 25px;
+    height: 30px;
+    position: absolute;
+    text-align: center;
+    font-size: 160%;
+    background: #b9efb9;
 }
