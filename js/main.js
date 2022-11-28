@@ -1,10 +1,12 @@
+"use strict"
 
+const letras = document.getElementsByClassName("character");
+const container = document.getElementById("container")
+const character_one = document.createElement("div");
+const hit_area = document.getElementById("hit-area")
 
-var letras = document.getElementsByClassName("character");
-var container = document.getElementById("container")
-var pos_inicial = 0;
-var character_one = document.createElement("div");
 var inicial_left = getRandomInt(container.offsetWidth - character_one.offsetWidth);
+var pos_inicial = 0;
 
 character_one.innerHTML = geraStringAleatoria(1)
 character_one.classList.add("character")
@@ -14,12 +16,6 @@ container.appendChild(character_one)
 character_one.style.left = `${inicial_left}px`
 character_one.style.top = `${pos_inicial}px`
 
-setInterval(function () {
-    if (parseInt(letras[0].style.top.replace("px","")) < container.offsetHeight) {
-        pos_inicial += 10
-        letras[0].style.top = `${pos_inicial}px`
-    }
-}, 500);
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -33,3 +29,51 @@ function geraStringAleatoria(tamanho) {
     }
     return stringAleatoria;
 }
+
+function addElement() {
+
+    setInterval(() =>{
+    
+        var element = document.createElement("div")
+        element.innerHTML = geraStringAleatoria(1)
+        element.classList.add("character")
+        container.appendChild(element)
+        
+        var inicial_left = getRandomInt(container.offsetWidth - element.offsetWidth);
+        
+        element.style.left = `${inicial_left}px`
+    }, 10000)
+    
+}
+addElement()
+
+function addAnimation(item){
+    var pos_inicial = 0;
+    item.style.top = `${pos_inicial}px`
+    
+    setInterval(() => {
+        
+        if (parseInt(item.style.top.replace("px","")) < container.offsetHeight) {
+            pos_inicial += 10
+            item.style.top = `${pos_inicial}px`
+        }
+        
+    }, 200)
+    
+}
+addAnimation(letras[0]);
+setInterval(()=>{
+    console.log()
+    addAnimation(letras[letras.length - 1])
+}, 10100)
+
+document.addEventListener('keydown', (event) => {
+    console.log(container.firstElementChild.textContent.toLowerCase())
+
+    if(parseInt(container.firstElementChild.style.top.replace("px","")) < container.offsetHeight && parseInt(container.firstElementChild.style.top.replace("px",""))  > container.offsetHeight - 100){
+        if(container.firstElementChild.textContent.toLowerCase() == event.key){
+            container.firstElementChild.parentNode.removeChild(container.firstElementChild)
+        }
+    }
+
+}) 
