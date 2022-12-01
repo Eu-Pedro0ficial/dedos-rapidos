@@ -6,7 +6,7 @@
 div#container{
     width: 500px;
     height: 400px;
-    border: 1px solid red;
+    border: 1px solid purple;
 }
 div#hit-area{
     width: 500px;
@@ -31,4 +31,12 @@ div.character{
     text-align: center;
     font-size: 160%;
     background: #b9efb9;
+}
+div#life-in-game{
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+    position: absolute;
+    left: 500px;
+    top: 100px;
 }
