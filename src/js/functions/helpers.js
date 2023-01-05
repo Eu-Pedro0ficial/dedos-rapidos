@@ -1,4 +1,5 @@
-import {letras, data, container} from './variaveis.js';
+import {letras, data, container, content, lifeInGame} from './variaveis.js';
+import { checkLimitInGreenArea } from './validate.js';
 import {createElement, addElementInPage} from './element.js'
 import animation from './animation.js';
 
@@ -20,6 +21,25 @@ function clearIntervalAll(array){
     }
 }
 
+let setintervalIndex = [];
+
+function startGame(){
+    setintervalIndex.push(listeningScore());
+    setintervalIndex.push(listeningHTML());
+    setintervalIndex.push(checkLimitInGreenArea());
+
+}
+
+function restartToGame(){
+    while(container.firstElementChild){
+
+        container.firstElementChild.parentNode.removeChild(container.firstElementChild)
+    }
+    lifeInGame.dataset.life = 3;
+    lifeInGame.textContent = lifeInGame.dataset.life = 3;
+    startGame();
+}
+
 function listeningHTML(){
     return setInterval(() => {
         let lenghtElement = letras.length
@@ -30,4 +50,12 @@ function listeningHTML(){
         }
     }, data.secondTime)
 }
-export {deleteCharacter, addStyleFromLoser, clearIntervalAll, listeningHTML};
+function listeningScore(){
+    return setInterval(()=>{
+        if(lifeInGame.dataset.life <= 0){
+            clearIntervalAll(setintervalIndex);
+        }
+    }, 400)
+}
+
+export {deleteCharacter, addStyleFromLoser, clearIntervalAll, listeningHTML, listeningScore, startGame, restartToGame};

@@ -1,17 +1,13 @@
 "use strict"
-import {checkLimitInGreenArea, checkKeyboardEvent} from './functions/validate.js';
-import {clearIntervalAll, listeningHTML} from './functions/helpers.js';
+import {checkKeyboardEvent} from './functions/validate.js';
+import {startGame, restartToGame} from './functions/helpers.js';
+import {start, loser} from './functions/variaveis.js';
 
-let setintervalIndex = [];
-
-setintervalIndex.push(listeningHTML())
-setintervalIndex.push(checkLimitInGreenArea())
 
 document.addEventListener('keydown', (event) => {
     
     checkKeyboardEvent(event)
     
 })
-// 3 setinterval
-
-// clearIntervalAll(setintervalIndex);
+start.addEventListener('click', startGame);
+loser.addEventListener('click', restartToGame);

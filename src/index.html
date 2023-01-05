@@ -9,10 +9,20 @@
 </head>
 <body>
     <main id="content">
-        <div id="score-container" data-score="0">0</div>
-        <div id="life-in-game" data-life="1">1</div>
-        <div id="container"></div>
-        <div id="hit-area"></div>
+        <div class="inicialPage">
+            <h1>Iniciar jogo</h1>
+            <input type="button" value="Iniciar" id="startGame">
+        </div>
+        <div class="game">
+            <div id="score-container" data-score="0">0</div>
+            <div id="life-in-game" data-life="3">3</div>
+            <div id="container"></div>
+            <div id="hit-area"></div>
+        </div>
+        <div class="loserPage">
+            <h1>Você perdeu!</h1>
+            <input type="button" value="Reiniciar" id="loser">
+        </div>
     </main>
     
     <script type="module" src="./js/main.js"></script>    
