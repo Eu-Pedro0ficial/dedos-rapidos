@@ -4,11 +4,13 @@
     box-sizing: border-box;
 }
 div#container{
+    opacity: 0;
     width: 500px;
     height: 400px;
     border: 1px solid purple;
 }
 div#hit-area{
+    opacity: 0;
     width: 500px;
     height: 50px;
     border: 1px solid green;
@@ -16,6 +18,7 @@ div#hit-area{
     top: 350px;
 }
 div#score-container{
+    opacity: 0;
     width: 100px;
     height: 100px;
     border: 1px solid yellow;
@@ -33,10 +36,17 @@ div.character{
     background: #b9efb9;
 }
 div#life-in-game{
+    opacity: 0;
     width: 100px;
     height: 100px;
     border: 1px solid red;
     position: absolute;
     left: 500px;
     top: 100px;
+}
+h1#titleLoser{
+    opacity: 0;
+}
+input#loser{
+    opacity: 0;
 }
