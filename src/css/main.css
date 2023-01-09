@@ -1,52 +1,149 @@
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  font-size: 62.5%;
+}
+body{
+  font-size: 1.6rem;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ADACB5;
+}
+div.inicialPage{
+  font-family: 'Rubik Vinyl', cursive;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+button.button{
+  border-radius: 10px;
+  border: 0;
+  background-color: #EAE8FF;
+  font-size: 1.6rem;
+  font-weight: bold;
+  width: 10vw;
+  height: 5vh;
+  cursor: pointer;
+  outline: 0;
+  padding: 5px;
+}
+button.button:hover{
+  transform: scale(1.1);
+}
+div.game{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }
 div#container{
-    opacity: 0;
-    width: 500px;
-    height: 400px;
-    border: 1px solid purple;
+  opacity: 0;
+  width: 60vw;
+  height: 50vh;
+  background-color: #D8D5DB;
+  box-shadow: 2px 2px 7px black;
 }
 div#hit-area{
-    opacity: 0;
-    width: 500px;
-    height: 50px;
-    border: 1px solid green;
-    position: absolute;
-    top: 350px;
+  opacity: 0;
+  width: 60vw;
+  height: 5vh;
+  position: absolute;
+  top: 90%;
+  background-color: #2D3142;
 }
 div#score-container{
-    opacity: 0;
-    width: 100px;
-    height: 100px;
-    border: 1px solid yellow;
-    position: absolute;
-    left: 500px;
-}
-
-div.character{
-    border: 1px solid black;
-    width: 25px;
-    height: 30px;
-    position: absolute;
-    text-align: center;
-    font-size: 160%;
-    background: #b9efb9;
+  font-weight: bold;
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  width: 5vw;
+  height: 5vh;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  position: absolute;
+  left: 92%;
 }
 div#life-in-game{
-    opacity: 0;
-    width: 100px;
-    height: 100px;
-    border: 1px solid red;
-    position: absolute;
-    left: 500px;
-    top: 100px;
+  font-weight: bold;
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  width: 5vw;
+  height: 5vh;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  position: absolute;
+  left: 92%;
+  top: 10%;
+}
+div.character{
+  z-index: 10;
+  width: 25px;
+  height: 30px;
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  font-size: 200%;
+}
+div.loserPage{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+div#res{
+  opacity: 0;
+  padding: 10px;
 }
 h1#titleLoser{
-    opacity: 0;
+  font-family: 'Rubik Vinyl', cursive;
+  opacity: 0;
 }
-input#loser{
-    opacity: 0;
+button#loser{
+  opacity: 0;
+}
+
+@media(max-width: 780px){
+  button.button{
+    font-weight: normal;
+    width: 70px;
+  }
+}
+
+@media(max-width: 420px){
+  div.inicialPage{
+    top: 20%;
+  }
+  div.loserPage{
+  top: 50%;
+  }
+  div#score-container{
+    width: 40px;
+    height: 30px;
+    left: 80%;
+  }
+  div#life-in-game{
+    width: 40px;
+    height: 30px;
+    left: 80%;
+    top: 6%;
+  }
 }

@@ -1,4 +1,4 @@
-import {letras, data, container, content, lifeInGame, score_container, hit_area, titleLoser, titleStart, loser, start} from './variaveis.js';
+import {letras, timeToListening, timeToAnimation, container, content, lifeInGame, score_container, hit_area, titleLoser, titleStart, loser, start, point} from './variaveis.js';
 import { checkLimitInGreenArea } from './validate.js';
 import {createElement, addElementInPage} from './element.js'
 import animation from './animation.js';
@@ -25,7 +25,6 @@ let setintervalIndex = [];
 
 function startGame(){
     appearElement([hit_area, score_container, lifeInGame, container]);
-    setintervalIndex.push(listeningScore());
     setintervalIndex.push(listeningHTML());
     setintervalIndex.push(checkLimitInGreenArea());
     disappearElement([titleStart, start]);
@@ -37,9 +36,11 @@ function restartToGame(){
 
         container.firstElementChild.parentNode.removeChild(container.firstElementChild)
     }
-    lifeInGame.dataset.life = 3;
-    lifeInGame.textContent = lifeInGame.dataset.life = 3;
-    disappearElement([titleLoser, loser])
+    let score = score_container.dataset.score = 0
+    score_container.textContent = score;
+    let life = lifeInGame.dataset.life = 3;
+    lifeInGame.textContent = life;
+    disappearElement([titleLoser, loser, point])
     startGame();
 }
 
@@ -55,6 +56,19 @@ function disappearElement(array){
     });
 }
 
+function checkScoreFromNextLevel(){
+    let score = score_container.dataset.score;
+    if(score <= 10){
+        timeToListening.push(900);
+        timeToAnimation.push(190);
+    }else if(score <= 20){
+        timeToListening.push(800);
+        timeToAnimation.push(180);
+    }else{
+        timeToListening.push(700);
+        timeToAnimation.push(170);
+    }
+}
 
 function listeningHTML(){
     return setInterval(() => {
@@ -64,21 +78,9 @@ function listeningHTML(){
         if(lenghtElement <= letras.length){
             animation(letras[letras.length - 1]);
         }
-    }, data.secondTime)
-}
-function listeningScore(){
-    return setInterval(()=>{
-        if(lifeInGame.dataset.life <= 0){
-            clearIntervalAll(setintervalIndex);
-            appearElement([titleLoser, loser])
-        }
-    }, 400)
+    }, timeToListening[timeToListening.length -1])
 }
 
 
-/*
-    display: none; //some com tudo, até o espaço
-    opacity: 0; // trasparencia
-*/
 
-export {deleteCharacter, addStyleFromLoser, clearIntervalAll, listeningHTML, listeningScore, startGame, restartToGame};
+export {deleteCharacter, checkScoreFromNextLevel, addStyleFromLoser, clearIntervalAll, listeningHTML, startGame, restartToGame, setintervalIndex, appearElement, disappearElement};

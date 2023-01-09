@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap" rel="stylesheet">
     <title>dedos-rapidos</title>
 </head>
 <body>
-    <main id="content">
+    <main class="content" id="content">
         <div class="inicialPage">
-            <h1 id="titleStart">Iniciar jogo</h1>
-            <input type="button" value="Iniciar" id="startGame">
+            <h1 class="title" id="titleStart">Iniciar jogo</h1>
+            <button class="button" id="startGame">Iniciar</button>
         </div>
         <div class="game">
             <div id="score-container" data-score="0">0</div>
@@ -20,8 +21,9 @@
             <div id="hit-area"></div>
         </div>
         <div class="loserPage">
-            <h1 id="titleLoser">Você perdeu!</h1>
-            <input type="button" value="Reiniciar" id="loser">
+            <h1 class="title" id="titleLoser">Você perdeu!</h1>
+            <div id="res"></div>
+            <button class="button" id="loser">Reiniciar</button>
         </div>
     </main>
     
