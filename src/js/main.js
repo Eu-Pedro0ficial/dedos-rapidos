@@ -1,7 +1,6 @@
 "use strict"
 import {checkKeyboardEvent} from './functions/validate.js';
-import {startGame, restartToGame} from './functions/helpers.js';
-import {start, loser} from './functions/variaveis.js';
+import {startGame, restartToGame} from './functions/forStart.js'
 
 
 document.addEventListener('keydown', (event) => {

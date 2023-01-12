@@ -1,5 +1,3 @@
-let inicial_top;
-
 function createElement() {
     let randomCharacter = geraStringAleatoria(1)
     
@@ -14,7 +12,7 @@ function createElement() {
 function addElementInPage(element){
     container.appendChild(element)
     var inicial_left = getRandomInt(container.offsetWidth - element.offsetWidth);
-    inicial_top = 0;
+    let inicial_top = 0;
     
     element.style.left = `${inicial_left}px`
     element.style.top = `${inicial_top}px`

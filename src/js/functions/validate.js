@@ -1,31 +1,43 @@
-import {container, heightContainer, data, lifeInGame, score_container, hit_area, titleLoser, loser, point} from './variaveis.js';
-import {deleteCharacter, appearElement, disappearElement, setintervalIndex, clearIntervalAll, checkScoreFromNextLevel} from './helpers.js';
-
-function characterExist(){
+function checkIfCharacterExist(){
     return document.body.contains(container.firstElementChild);
 }
 
 function checkLimitInGreenArea(){
     // trocar o item.style.top.replace("px", '')
     return setInterval(()=>{
-        if(characterExist()){
+        if(checkIfCharacterExist()){
             let styleTopFirstElement = container.firstElementChild.style.top.replace("px", '')
-            if(styleTopFirstElement >= heightContainer && listeningScore()){
+            if(styleTopFirstElement >= heightContainer){
                 lifeInGame.textContent = --lifeInGame.dataset.life;
-                deleteCharacter();
+                helpers.deleteCharacter();
+                checkScoreAndApplyLoserScreen();
             }   
         }
-    }, data.threeTime)
+    }, 200)
 }
-function listeningScore(){
-    if(lifeInGame.dataset.life <= 0){
-        clearIntervalAll(setintervalIndex);
-        point.textContent = `Essa foi sua pontuação: ${score_container.dataset.score}`;
-        disappearElement([hit_area, score_container, lifeInGame, container]);
-        appearElement([titleLoser, loser, point]);
-        return false;
+
+function checkScoreFromNextLevel(){
+    let score = score_container.dataset.score;
+    if(score <= 10){
+        settings.timeToListening.push(900);
+        settings.timeToAnimation.push(190);
+    }else if(score <= 20){
+        settings.timeToListening.push(800);
+        settings.timeToAnimation.push(180);
+    }else{
+        settings.timeToListening.push(700);
+        settings.timeToAnimation.push(170);
     }
-    return true;
+}
+
+function checkScoreAndApplyLoserScreen(){
+    if(lifeInGame.dataset.life <= 0){
+        helpers.clearAllCharacters();
+        helpers.clearIntervalAll(setintervalIndex);
+        point.textContent = `Essa foi sua pontuação: ${score_container.dataset.score}`;
+        helpers.disappearElement([hit_area, score_container, lifeInGame, container]);
+        helpers.appearElement([titleLoser, loser, point]);
+    }
 }
 
 function checkKeyboardEvent(event){
@@ -35,10 +47,10 @@ function checkKeyboardEvent(event){
         if(container.firstElementChild.textContent.toLowerCase() == event.key){
             score_container.textContent = score_container.dataset.score++;
             checkScoreFromNextLevel();
-            deleteCharacter()
+            helpers.deleteCharacter()
             
         }
     }
 }
 
-export {characterExist, checkLimitInGreenArea, checkKeyboardEvent};
+export {checkIfCharacterExist,checkLimitInGreenArea, checkKeyboardEvent};

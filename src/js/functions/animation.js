@@ -1,5 +1,3 @@
-import {heightContainer, timeToAnimation} from './variaveis.js';
-
 export default function animation(item){
     let inicial_top = 0
 
@@ -9,6 +7,6 @@ export default function animation(item){
             item.style.top = `${inicial_top}px`
         }
         
-    },  timeToAnimation[timeToAnimation.length -1])
+    },  settings.timeToAnimation[settings.timeToAnimation.length -1])
     
 }
